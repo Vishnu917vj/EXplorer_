@@ -319,6 +319,7 @@ input{
   transform: translateY(-2px);
 }
 
+
 .profile-list li button {
   background-color: white;
   color: #161414; /* Delete button */
@@ -338,4 +339,34 @@ input{
 }
 input{
   width: 100% !important;
+}
+
+admin-link{
+  width: 100% !important;
+  align-self: flex-start;
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* Vertically center the link and heading */
+  width: 100%;
+  padding: 10px 20px; /* Optional: Add some padding */
+}
+
+.admin-link {
+  margin-right: 20px; /* Space between link and heading */
+}
+
+.admin-link a {
+  text-decoration: none; /* Remove underline from link */
+  color: #2196f3; /* Blue color for the link */
+  font-weight: bold; /* Make it stand out */
+}
+
+.admin-link a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+
+h1 {
+  margin: 5px; /* Remove default margin to align properly */
 }

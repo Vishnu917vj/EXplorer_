@@ -4,7 +4,8 @@ import ProfileCard from '../components/ProfileCard';
 import MapComponent from '../components/MapComponent';
 import SearchFilter from '../components/SearchFilter';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { toast } from 'react-toastify'; // Import toast
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { profiles, selectedProfile } = useContext(ProfileContext);
@@ -13,14 +14,13 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => setLoading(false), 1000); // Simulate API call
+    setTimeout(() => setLoading(false), 1000);
 
-    // Detect if the user is on a mobile device
-    const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+    const isMobile = window.innerWidth <= 768;
     if (isMobile) {
       toast.info('Scroll down to see the map!', {
-        position: 'top-center', // Centered for better visibility on mobile
-        autoClose: 5000, // 5 seconds
+        position: 'top-center',
+        autoClose: 5000,
       });
     } else {
       toast.success('Welcome to Profile Explorer!', {
@@ -31,7 +31,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setFilteredProfiles(profiles); // Sync with context profiles
+    setFilteredProfiles(profiles);
   }, [profiles]);
 
   const handleFilter = (filtered) => {
@@ -40,7 +40,12 @@ const Home = () => {
 
   return (
     <div className="home">
-      <h1>Profile Explorer</h1>
+      <div className="header-container">
+        <div className="admin-link">
+          <Link to="/admin">Admin</Link>
+        </div>
+        <h1>Profile Explorer</h1>
+      </div>
       <SearchFilter profiles={profiles} onFilter={handleFilter} />
       {loading ? (
         <LoadingSpinner />
